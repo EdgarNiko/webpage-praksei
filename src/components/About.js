@@ -1,36 +1,41 @@
-import React, { Component } from "react";
-import Image from "./img.png";
+import React from "react";
+import { makeStyles } from "@material-ui/core";
+import Component from "./index";
+import SlideShow from "./sshowindex";
 
-class About extends Component {
-  render() {
-    return (
-      <div>
-        <h2>About Us</h2>
-        <hr />
-        <p>
-          By an outlived insisted procured improved am. Paid hill fine ten now
-          love even leaf. Supplied feelings mr of dissuade recurred no it
-          offering honoured. Am of of in collecting devonshire favourable
-          excellence. Her sixteen end ashamed cottage yet reached get hearing
-          invited. Resources ourselves sweetness ye do no perfectly. Warmly
-          warmth six one any wisdom. Family giving is pulled beauty chatty
-          highly no. Blessing appetite domestic did mrs judgment rendered
-          entirely. Highly indeed had garden not.
-        </p>
-        <p>
-          Raising say express had chiefly detract demands she. Quiet led own
-          cause three him. Front no party young abode state up. Saved he do
-          fruit woody of to. Met defective are allowance two perceived listening
-          consulted contained. It chicken oh colonel pressed excited suppose to
-          shortly. He improve started no we manners however effects. Prospect
-          humoured mistress to by proposal marianne attended. Simplicity the far
-          admiration preference everything. Up help home head spot an he room
-          in.
-        </p>
-        <img src={Image} />
-      </div>
-    );
+const useStyles = makeStyles(() => ({
+  main: {
+    minHeight: "80vh",
+    margin: " 0 auto .5em",
+    width: "90%"
   }
+}));
+
+function About() {
+  const classes = useStyles();
+  return (
+    <div className={classes.main}>
+      <h2>About Us</h2>
+      <hr />
+      <p>
+        He share of first to worse. Weddings and any opinions suitable smallest
+        nay. My he houses or months settle remove ladies appear. Engrossed
+        suffering supposing he recommend do eagerness. Commanded no of depending
+        extremity recommend attention tolerably. Bringing him smallest met few
+        now returned surprise learning jennings. Objection delivered eagerness
+        he exquisite at do in. Warmly up he nearer mr merely me.
+      </p>
+      <div>
+        <SlideShow withTimer={{ isTimer: true, timeDelay: 5000 }}>
+          {Array(3)
+            .fill(0)
+            .map((_, i) => (
+              <Component id={i} key={`Component${i}`} title={`${i + 1}`} />
+            ))}
+        </SlideShow>
+      </div>
+    </div>
+  );
 }
 
 export default About;
